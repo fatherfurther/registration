@@ -7,5 +7,17 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+    <button>Request!!</button>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect();
+    $('button').on('click', function() {
+      socket.emit('request');
+    });
+    socket.on('response', function() {
+      alert('Get Response!!');
+    });
+    </script>
   </body>
 </html>
